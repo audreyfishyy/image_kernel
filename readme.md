@@ -1,4 +1,6 @@
 # image kernel convolution opengl 3.3
+https://en.wikipedia.org/wiki/Kernel_(image_processing)
+
 - identity kernel
 ![identity_screenshot_png](identity_screenshot.jpg)
 - edge kernel
