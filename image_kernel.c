@@ -39,10 +39,10 @@ uint32_t create_texture(const char* path)
 	glGenTextures(1, &id);
 	glBindTexture(GL_TEXTURE_2D, id);
 
-	// filtering
+	/* filtering */
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// mipmap
+	/* mipmaps */
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -117,7 +117,7 @@ uint32_t create_shader(const char* vertex_source, const char* fragment_source)
 	return program;
 }
 
-void draw_full_screen_quad()
+void draw_full_screen_quad(void)
 {
 	static uint32_t quad = 0;	
 	static uint32_t quad_buffer = 0;
@@ -131,10 +131,10 @@ void draw_full_screen_quad()
 	}
 
 	float vertices[] = {
-	     1.0f,  1.0f, 1.0f, 1.0f,  // top right
-	     1.0f, -1.0f, 1.0f, 0.0f,  // bottom right
-	    -1.0f, -1.0f, 0.0f, 0.0f,  // bottom left
-	    -1.0,  1.0f, 0.0f, 1.0f,   // top left 
+	     1.0f,  1.0f, 1.0f, 1.0f,
+	     1.0f, -1.0f, 1.0f, 0.0f,
+	    -1.0f, -1.0f, 0.0f, 0.0f,
+	    -1.0,  1.0f, 0.0f, 1.0f,
 	};
 	unsigned int indices[] = {
 	    0, 1, 3,
@@ -148,10 +148,10 @@ void draw_full_screen_quad()
 	glBindBuffer(GL_ARRAY_BUFFER, quad_buffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	// vertex
+	/* vertex */
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	// texture coordinate
+	/* texture coordinate */
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
