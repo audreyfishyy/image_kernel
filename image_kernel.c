@@ -169,13 +169,16 @@ int main(void)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(2560, 1440, "image_kernel", 0, 0);
+	const int32_t window_width = 2560;
+	const int32_t window_height = 1440;
+
+	GLFWwindow* window = glfwCreateWindow(window_width, window_height, "image_kernel", 0, 0);
 
 	glfwMakeContextCurrent(window);
 	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 	printf("%s\n", glGetString(GL_VERSION));
-
-	glViewport(0, 0, 2560, 1440);
+	
+	glViewport(0, 0, window_width, window_height);
 
 	const char* vertex_source = load_ascii_file("vertex.glsl");
 	const char* fragment_source = load_ascii_file("fragment.glsl");
